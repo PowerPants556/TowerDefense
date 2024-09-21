@@ -13,27 +13,28 @@ public class GameController : MonoBehaviour
     [Space(15)]
     [Header("Prefabs: ")]
     [SerializeField] private GameObject nodePrefab;
+    [SerializeField] private GameObject planePrefab;
 
-    private void Start()
-    {
+    [Space(15)]
+    [SerializeField] private Transform nodeParent;
 
-    }
     
     [ContextMenu("CreateNodes")]
     private void CreateNodes()
     {
-        if (transform.childCount > 0)
+        while (nodeParent.childCount > 0)
         {
-            /*foreach(Transform child in transform.GetComponentsInChildren<Transform>())
-            {
-                DestroyImmediate(child);
-            }*/
+            DestroyImmediate(nodeParent.GetChild(0).gameObject);
         }
+
+        GameObject plane = Instantiate(planePrefab, new Vector3((NODE_GRID_ROW_COUNT * offset) / 2 - 0.75f, -0.5f, (NODE_GRID_COLLUM_COUNT * offset) / 2 - 0.75f), Quaternion.identity, nodeParent);
+        plane.transform.localScale = new Vector3(0.1f * NODE_GRID_ROW_COUNT * offset -0.05f, plane.transform.localScale.y, 0.1f * NODE_GRID_COLLUM_COUNT * offset -0.05f);
+
         for (int x = 0; x < NODE_GRID_ROW_COUNT; x++)
         {
             for(int z = 0; z <NODE_GRID_COLLUM_COUNT; z++)
             {
-                GameObject obj = Instantiate(nodePrefab, new Vector3(x * offset, 0, z * offset), Quaternion.identity, transform);
+                GameObject obj = Instantiate(nodePrefab, new Vector3(x * offset, 0, z * offset), Quaternion.identity, nodeParent);
                 obj.name = "Name: " + x + " " + z;
             }
         }
