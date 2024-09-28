@@ -648,6 +648,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 65949830}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &113622752 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5463661086346651182, guid: 5f05c504b3de38e4999256cd9986c8c9, type: 3}
+  m_PrefabInstance: {fileID: 1836564860}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &194274160
 GameObject:
   m_ObjectHideFlags: 0
@@ -4629,6 +4634,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 4287452234611180091, guid: cfe3d71d3b7718c468f23a79e955fce7, type: 3}
+  countdown: 3
+  timeBetweenSpawnEnemy: 2
 --- !u!1 &1784101315
 GameObject:
   m_ObjectHideFlags: 0
@@ -5165,6 +5172,7 @@ MonoBehaviour:
   planePrefab: {fileID: 3160638160502314895, guid: c3fcd41a941b8d2469a0bed71968bf7e, type: 3}
   cameraRotatePref: {fileID: 5463661086346651182, guid: 5f05c504b3de38e4999256cd9986c8c9, type: 3}
   nodeParent: {fileID: 865281813}
+  camRotat: {fileID: 113622752}
 --- !u!1 &2115807906
 GameObject:
   m_ObjectHideFlags: 0
@@ -5270,6 +5278,67 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2115807906}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &2404380737230962787
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3562336512503847673, guid: e21e728c4519173408f03c44a42a2724, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3562336512503847673, guid: e21e728c4519173408f03c44a42a2724, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3562336512503847673, guid: e21e728c4519173408f03c44a42a2724, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3562336512503847673, guid: e21e728c4519173408f03c44a42a2724, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3562336512503847673, guid: e21e728c4519173408f03c44a42a2724, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3562336512503847673, guid: e21e728c4519173408f03c44a42a2724, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3562336512503847673, guid: e21e728c4519173408f03c44a42a2724, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3562336512503847673, guid: e21e728c4519173408f03c44a42a2724, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3562336512503847673, guid: e21e728c4519173408f03c44a42a2724, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3562336512503847673, guid: e21e728c4519173408f03c44a42a2724, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8001030649380238691, guid: e21e728c4519173408f03c44a42a2724, type: 3}
+      propertyPath: range
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8714362645894687721, guid: e21e728c4519173408f03c44a42a2724, type: 3}
+      propertyPath: m_Name
+      value: Turret
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e21e728c4519173408f03c44a42a2724, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -5281,3 +5350,4 @@ SceneRoots:
   - {fileID: 865281813}
   - {fileID: 642903074}
   - {fileID: 1836564860}
+  - {fileID: 2404380737230962787}

@@ -19,6 +19,7 @@ public class GameController : MonoBehaviour
     [Space(15)]
     [SerializeField] private Transform nodeParent;
 
+    [SerializeField] private GameObject camRotat;
 
     [ContextMenu("CreateNodes")]
     private void CreateNodes()
@@ -31,7 +32,6 @@ public class GameController : MonoBehaviour
         GameObject plane = Instantiate(planePrefab, new Vector3((NODE_GRID_ROW_COUNT * offset) / 2 - 0.75f, -0.5f, (NODE_GRID_COLLUM_COUNT * offset) / 2 - 0.75f), Quaternion.identity, nodeParent);
         plane.transform.localScale = new Vector3(0.1f * NODE_GRID_ROW_COUNT * offset -0.05f, plane.transform.localScale.y, 0.1f * NODE_GRID_COLLUM_COUNT * offset -0.05f);
 
-        GameObject camRotat = GameObject.FindWithTag("CameraRotate");
         camRotat.transform.position = new Vector3((NODE_GRID_ROW_COUNT * offset) / 2 - 0.75f, -1.5f, (NODE_GRID_COLLUM_COUNT * offset) / 2 - 0.75f);
 
         for (int x = 0; x < NODE_GRID_ROW_COUNT; x++)
@@ -46,7 +46,6 @@ public class GameController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        GameObject camRotat = GameObject.FindWithTag("CameraRotate");
 
         if (Input.GetKey("a"))
         {
