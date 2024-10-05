@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Turret : MonoBehaviour
@@ -7,6 +8,10 @@ public class Turret : MonoBehaviour
     private Transform target;
     [SerializeField] private float range = 2f;
 
+    [Header("Bullet settings")]
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private Transform[] gunBarrel;
+    [SerializeField] private float rechargeTime;
     private List<Transform> targetInRange = new List<Transform>();
 
     private void OnDrawGizmosSelected()
@@ -17,7 +22,7 @@ public class Turret : MonoBehaviour
 
     private void Start()
     {
-        InvokeRepeating("FindTarget", 0f, 0.3f);
+        //InvokeRepeating("FindTarget", 0f, 0.3f);
     }
 
     private void Update()
@@ -27,32 +32,48 @@ public class Turret : MonoBehaviour
             transform.LookAt(target);
         }
     }
-    private void FindTarget()
+    private Transform FindTarget()
     {
-        if (targetInRange == null) return;
-        float distance = 0;
+        if (targetInRange == null) return null;
+        Transform newTarget = targetInRange.First();
 
+        //RemoveNullObjects();
         foreach(Transform t in targetInRange)
         {
-            float distanceToEnemy = Vector3.Distance(transform.position, t.position);
-            if (distanceToEnemy < distance)
+            if(t == null)
             {
-                distance = distanceToEnemy;
+                continue;
+            }
+            float distanceToEnemy = Vector3.Distance(transform.position, t.position);
+            float distanceToPrevEnemy = Vector3.Distance(transform.position, newTarget.position);
+            if (distanceToEnemy < distanceToPrevEnemy)
+            {
                 target = t;
             }
         }
+        return newTarget;
+    }
 
-        if (distance > range)
+    private void RemoveNullObjects()
+    {
+        var nullObjects = new List<Transform>();
+        foreach(Transform t in targetInRange)
         {
-            target = null;
-            return;
+            if(t == null)
+            {
+                nullObjects.Add(t);
+            }            
+        }
+        foreach(Transform t in nullObjects)
+        {
+            targetInRange.Remove(t);
         }
     }
     private void OnTriggerEnter(Collider col)
     {
         if(col.tag == "Enemy")
         {
-            targetInRange.Add(target.transform);
+            targetInRange.Add(col.transform);
         }
     }
     private void OnTraggerExit(Collider col)
@@ -67,7 +88,7 @@ public class Turret : MonoBehaviour
     {
         if(col.tag == "Enemy")
         {
-            FindTarget();
+            target = FindTarget();
         }
     }
 }

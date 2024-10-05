@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
 
     private uint health;
 
+
     private void Awake()
     {
         finishPoint = GameObject.FindGameObjectWithTag("Finish").transform.position;
@@ -22,10 +23,11 @@ public class Enemy : MonoBehaviour
         agent.speed = enemyData.speed;
         health = enemyData.maxHealth;
     }
-    private void OntriggerEnter(Collider col)
+    private void OnTriggerEnter(Collider col)
     {
         if(col.tag == "Finish")
         {
+
             Destroy(gameObject);
         }
     }
